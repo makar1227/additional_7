@@ -1,8 +1,11 @@
 module.exports =
     function solve(matrix) {
         let x = true;
-        for (let i = 0; i < 9; i++) {
-            for (let j = 0; j < 9; j++) {
+        let i = 0;
+        let j = 0;
+        while (i < 9) {
+            j = 0;
+            while (j < 9) {
                 if (matrix[i][j] == 0) {
                     for (let k = 1; k < 10; k++) {
                         if (checkLines(matrix, i, j, k) && checkSquere(matrix, i, j, k)) {
@@ -14,7 +17,9 @@ module.exports =
                     }
                     return false;
                 }
+                j++;
             }
+            i++;
         }
         return true;
     }
@@ -33,5 +38,5 @@ function checkSquere(matrix, i, j, k) {
         if ((a != i && matrix[a][j] == k) || (a != j && matrix[i][a] == k))
             return false;
     }
-        return true;
+    return true;
 }
